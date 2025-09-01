@@ -4,10 +4,10 @@ export enum UserRole {
 }
 
 export interface IUser {
-  id: string;
-  email: string;
+  uid: string;
+  email: string | null;
   isEmailVerified: boolean;
-  displayName: string;
+  displayName: string | null;
   photoURL: string | null;
   backgroundURL: string | null;
   bio: string | null;

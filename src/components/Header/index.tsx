@@ -3,14 +3,23 @@
 import { useAuthModal } from "@/contexts/AuthModalProvider";
 import { useProgress } from "@/contexts/ProgressProvider";
 import { Theme } from "@/interfaces";
-import { useThemeStore } from "@/stores";
-import { Button, Image, Link } from "@heroui/react";
+import { useThemeStore, useUserStore } from "@/stores";
+import {
+  Button,
+  Dropdown,
+  DropdownItem,
+  DropdownMenu,
+  DropdownTrigger,
+  Image,
+  Link,
+} from "@heroui/react";
 import {
   BellIcon,
   LanguagesIcon,
   MoonIcon,
   SearchIcon,
   SunIcon,
+  UserIcon,
 } from "lucide-react";
 import ProgressLink from "../ProgressLink";
 
@@ -18,6 +27,7 @@ const Header = () => {
   const { theme, toggleTheme } = useThemeStore();
   const { onOpen } = useAuthModal();
   const { progress } = useProgress();
+  const { user } = useUserStore();
 
   return (
     <header className="sticky top-0 left-0 w-full z-20 h-16 bg-white dark:bg-neutral-950 transition-colors">
@@ -72,9 +82,23 @@ const Header = () => {
             <BellIcon size={20} />
           </Button>
 
-          <Button onPress={onOpen} color="primary" radius="full">
-            Sign In
-          </Button>
+          {user ? (
+            <Dropdown>
+              <DropdownTrigger>
+                <Button isIconOnly variant="light">
+                  <UserIcon size={20} />
+                </Button>
+              </DropdownTrigger>
+
+              <DropdownMenu>
+                <DropdownItem key="logout">Logout</DropdownItem>
+              </DropdownMenu>
+            </Dropdown>
+          ) : (
+            <Button onPress={onOpen} color="primary" radius="full">
+              Sign In
+            </Button>
+          )}
         </div>
       </div>
     </header>

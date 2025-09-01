@@ -1,3 +1,5 @@
+import { auth } from "@/config/firebase";
+import { createUserIfNotExists } from "@/utils";
 import {
   Button,
   ButtonGroup,
@@ -8,6 +10,12 @@ import {
   ModalHeader,
   useDisclosure,
 } from "@heroui/react";
+import {
+  FacebookAuthProvider,
+  GoogleAuthProvider,
+  signInWithPopup,
+} from "firebase/auth";
+import { signInAnonymously } from "firebase/auth/web-extension";
 import { User } from "lucide-react";
 import { createContext, ReactNode, useContext, useState } from "react";
 
@@ -23,6 +31,66 @@ export const AuthModalContext = createContext<AuthModalContextType>({
 
 const AuthModalProvider = ({ children }: { children: ReactNode }) => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
+  const [disabled, setDisabled] = useState(false);
+
+  const handleGuestSignIn = async () => {
+    try {
+      setDisabled(true);
+
+      const { user } = await signInAnonymously(auth);
+
+      await createUserIfNotExists(
+        user.uid,
+        user.displayName,
+        user.email,
+        user.emailVerified,
+      );
+    } catch (error) {
+      console.log("Guest sign in error:", error);
+    } finally {
+      setDisabled(false);
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      setDisabled(true);
+
+      const provider = new GoogleAuthProvider();
+      const { user } = await signInWithPopup(auth, provider);
+
+      await createUserIfNotExists(
+        user.uid,
+        user.displayName,
+        user.email,
+        user.emailVerified,
+      );
+    } catch (error) {
+      console.log("Google sign in error:", error);
+    } finally {
+      setDisabled(false);
+    }
+  };
+
+  const handleFacebookSignIn = async () => {
+    try {
+      setDisabled(true);
+
+      const provider = new FacebookAuthProvider();
+      const { user } = await signInWithPopup(auth, provider);
+
+      await createUserIfNotExists(
+        user.uid,
+        user.displayName,
+        user.email,
+        user.emailVerified,
+      );
+    } catch (error) {
+      console.log("Facebook sign in error:", error);
+    } finally {
+      setDisabled(false);
+    }
+  };
 
   return (
     <AuthModalContext.Provider value={{ isOpen, onOpen }}>
@@ -36,6 +104,8 @@ const AuthModalProvider = ({ children }: { children: ReactNode }) => {
               fullWidth
               variant="faded"
               radius="full"
+              isLoading={disabled}
+              onPress={handleGuestSignIn}
               startContent={<User size={20} />}
             >
               Sign in with guest
@@ -45,6 +115,8 @@ const AuthModalProvider = ({ children }: { children: ReactNode }) => {
               variant="faded"
               fullWidth
               radius="full"
+              isLoading={disabled}
+              onPress={handleGoogleSignIn}
               startContent={
                 <Image src="/google.webp" alt="Google" width={20} height={20} />
               }
@@ -56,6 +128,8 @@ const AuthModalProvider = ({ children }: { children: ReactNode }) => {
               variant="faded"
               fullWidth
               radius="full"
+              isLoading={disabled}
+              onPress={handleFacebookSignIn}
               startContent={
                 <Image
                   src="/facebook.png"

@@ -141,16 +141,19 @@ const Loader = () => {
     <LoaderWrapper>
       <Box>
         <Left>
-          <LeftHighlight color="#ec4899" /> {/* pink-500 */}
+          <LeftHighlight color="#ec4899" />
         </Left>
+
         <Top>
-          <TopHighlight color="#f59e0b" /> {/* amber-500 */}
+          <TopHighlight color="#f59e0b" />
         </Top>
+
         <Right>
-          <RightHighlight color="#3b82f6" /> {/* blue-500 */}
+          <RightHighlight color="#3b82f6" />
         </Right>
+
         <Bottom>
-          <BottomHighlight color="#ef4444" /> {/* red-500 */}
+          <BottomHighlight color="#ef4444" />
         </Bottom>
       </Box>
     </LoaderWrapper>
