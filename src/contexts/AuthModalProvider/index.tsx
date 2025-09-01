@@ -9,7 +9,7 @@ import {
   useDisclosure,
 } from "@heroui/react";
 import { User } from "lucide-react";
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useContext, useState } from "react";
 
 interface AuthModalContextType {
   isOpen: boolean;
@@ -72,6 +72,14 @@ const AuthModalProvider = ({ children }: { children: ReactNode }) => {
       </Modal>
     </AuthModalContext.Provider>
   );
+};
+
+export const useAuthModal = () => {
+  const ctx = useContext(AuthModalContext);
+  if (!ctx) {
+    throw new Error("useAuthModal must be used within AuthModalProvider");
+  }
+  return ctx;
 };
 
 export default AuthModalProvider;

@@ -1,9 +1,10 @@
 "use client";
 
-import { AuthModalContext } from "@/contexts/AuthModalProvider";
+import { useAuthModal } from "@/contexts/AuthModalProvider";
+import { useProgress } from "@/contexts/ProgressProvider";
 import { Theme } from "@/interfaces";
 import { useThemeStore } from "@/stores";
-import { Button, Image } from "@heroui/react";
+import { Button, Image, Link } from "@heroui/react";
 import {
   BellIcon,
   LanguagesIcon,
@@ -11,21 +12,33 @@ import {
   SearchIcon,
   SunIcon,
 } from "lucide-react";
-import { useContext } from "react";
+import ProgressLink from "../ProgressLink";
 
 const Header = () => {
   const { theme, toggleTheme } = useThemeStore();
-  const { onOpen } = useContext(AuthModalContext);
+  const { onOpen } = useAuthModal();
+  const { progress } = useProgress();
 
   return (
-    <header className="sticky top-0 left-0 w-full z-20 h-16 bg-white dark:bg-neutral-950 border-b border-gray-200 dark:border-gray-700 transition-colors">
+    <header className="sticky top-0 left-0 w-full z-20 h-16 bg-white dark:bg-neutral-950 transition-colors">
+      <div className="absolute bottom-0 h-[2px] w-full left-0 bg-neutral-200 dark:bg-neutral-700 transition-colors">
+        <div
+          className="absolute top-0 left-0 h-full transition-all bg-linear-65 from-purple-500 to-pink-500 shadow-lg shadow-blue-500"
+          style={{
+            width: `${progress}%`,
+          }}
+        ></div>
+      </div>
+
       <div className="h-full container mx-auto flex items-center px-4 justify-between">
         <div className="flex-1 flex items-center gap-3">
-          <Image
-            src="/logo.png"
-            alt="Logo"
-            className="hidden md:block w-10 h-10 bg-gray-900 dark:bg-transparent transition-colors rounded-full object-cover"
-          />
+          <ProgressLink href="/">
+            <Image
+              src="/logo.png"
+              alt="Logo"
+              className="hidden md:block w-10 h-10 bg-gray-900 dark:bg-transparent transition-colors rounded-full object-cover"
+            />
+          </ProgressLink>
 
           <div className="text-lg font-semibold font-code">
             Cirro<span className="text-blue-500">Box</span>
