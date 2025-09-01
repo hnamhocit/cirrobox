@@ -25,7 +25,7 @@ export default function DataDeletion() {
       </h2>
       <p className="mb-4 text-gray-700 dark:text-gray-300">
         Alternatively, you may send an email to{" "}
-        <span className="font-mono text-blue-600">support@example.com</span>{" "}
+        <span className="font-mono text-blue-600">hnamhocit@gmail.com</span>{" "}
         using the subject line{" "}
         <span className="font-semibold">"Data Deletion Request"</span>. Please
         include your registered email address.
