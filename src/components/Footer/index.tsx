@@ -1,3 +1,5 @@
+import ProgressLink from "../ProgressLink";
+
 const Footer = () => {
   return (
     <footer className="mt-12 py-8 bg-neutral-950">
@@ -46,21 +48,36 @@ const Footer = () => {
         {/* Chính sách & hỗ trợ */}
         <div>
           <h4 className="font-semibold mb-2 font-code">Legal</h4>
+
           <ul className="space-y-1 text-sm">
             <li>
-              <a href="/terms" className="hover:underline">
+              <ProgressLink
+                href="/terms-of-service"
+                className="hover:underline"
+              >
                 Terms of Service
-              </a>
+              </ProgressLink>
             </li>
+
             <li>
-              <a href="/privacy" className="hover:underline">
+              <ProgressLink
+                href="/privacy-and-policy"
+                className="hover:underline"
+              >
                 Privacy Policy
-              </a>
+              </ProgressLink>
             </li>
+
             <li>
-              <a href="/help" className="hover:underline">
+              <ProgressLink href="/data-deletion" className="hover:underline">
+                Data Deletion
+              </ProgressLink>
+            </li>
+
+            <li>
+              <ProgressLink href="/help" className="hover:underline">
                 Help Center
-              </a>
+              </ProgressLink>
             </li>
           </ul>
         </div>

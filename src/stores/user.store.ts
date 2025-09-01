@@ -1,13 +1,14 @@
-import { db } from "@/config/firebase";
+import { auth, db } from "@/config/firebase";
 import { IUser } from "@/interfaces";
+import { signOut } from "firebase/auth";
 import { doc, getDoc } from "firebase/firestore";
 import { create } from "zustand";
 
 interface UserStore {
   user: IUser | null;
   isLoading: boolean;
-
   getProfile: (id: string) => Promise<void>;
+  logout: () => Promise<void>;
 }
 
 export const useUserStore = create<UserStore>((set) => ({
@@ -29,6 +30,16 @@ export const useUserStore = create<UserStore>((set) => ({
       console.error(error);
     } finally {
       set({ isLoading: false });
+    }
+  },
+
+  logout: async () => {
+    try {
+      await signOut(auth);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      set({ user: null, isLoading: false });
     }
   },
 }));

@@ -22,12 +22,14 @@ import {
   UserIcon,
 } from "lucide-react";
 import ProgressLink from "../ProgressLink";
+import { signOut } from "firebase/auth";
+import { auth } from "@/config/firebase";
 
 const Header = () => {
   const { theme, toggleTheme } = useThemeStore();
   const { onOpen } = useAuthModal();
   const { progress } = useProgress();
-  const { user } = useUserStore();
+  const { user, logout } = useUserStore();
 
   return (
     <header className="sticky top-0 left-0 w-full z-20 h-16 bg-white dark:bg-neutral-950 transition-colors">
@@ -91,7 +93,9 @@ const Header = () => {
               </DropdownTrigger>
 
               <DropdownMenu>
-                <DropdownItem key="logout">Logout</DropdownItem>
+                <DropdownItem onClick={logout} key="logout">
+                  Logout
+                </DropdownItem>
               </DropdownMenu>
             </Dropdown>
           ) : (
