@@ -1,9 +1,16 @@
 "use client";
 
 import "highlight.js/styles/github-dark.css";
+
 import { useEffect, useRef } from "react";
 import hljs from "highlight.js";
-import { SquareTerminal, SquareTerminalIcon } from "lucide-react";
+import { SquareTerminalIcon } from "lucide-react";
+import { Google_Sans_Code } from "next/font/google";
+import clsx from "clsx";
+
+const font = Google_Sans_Code({
+  weight: "400",
+});
 
 type Props = {
   code: string;
@@ -27,7 +34,7 @@ export default function CodeBlock({ code, language }: Props) {
       </div>
 
       <pre>
-        <code ref={codeRef} className={language}>
+        <code ref={codeRef} className={clsx(language, font.className)}>
           {code}
         </code>
       </pre>
