@@ -2,14 +2,19 @@ import ProgressLink from "../ProgressLink";
 
 const Footer = () => {
   return (
-    <footer className="mt-12 py-8 bg-neutral-950">
+    <footer className="mt-12 py-8 bg-neutral-100 transition-colors dark:bg-neutral-950">
       <div className="container mx-auto px-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-        {/* Logo + App Name */}
         <div className="flex flex-col items-start">
-          <img src="/logo.png" alt="App Logo" className="h-16 w-16 mb-2" />
+          <img
+            src="/logo.png"
+            alt="App Logo"
+            className="h-16 w-16 mb-2 bg-neutral-900 rounded-full"
+          />
+
           <span className="font-bold text-lg font-code">
             Cirro<span className="text-blue-500">Box</span>
           </span>
+
           <p className="mt-2 text-sm">
             Making your life easier, one app at a time.
           </p>

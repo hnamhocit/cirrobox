@@ -1,3 +1,5 @@
+import GradientButton from "@/components/GradientButton";
+import ProgressLink from "@/components/ProgressLink";
 import {
   AmbulanceIcon,
   CloudDownload,
@@ -17,9 +19,12 @@ const Library = () => {
                     transition-shadow duration-300"
     >
       <div className="p-6 space-y-5">
-        <div className="text-2xl font-bold text-blue-500 font-code text-center">
-          GGD CLI
-        </div>
+        <ProgressLink
+          href="/libraries/drive-cli"
+          className="block text-2xl font-bold text-blue-500 font-code text-center"
+        >
+          DRIVE CLI
+        </ProgressLink>
 
         <div className="line-clamp-2 text-sm text-gray-200">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos debitis
@@ -81,7 +86,7 @@ const Library = () => {
           <button
             className="flex items-center gap-3 transition-all duration-300
                              hover:translate-y-[-2px] hover:shadow-[0_6px_15px_rgba(255,255,0,0.4)]
-                             rounded-md px-2 py-1 font-code bg-neutral-900 shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
+                             rounded-md px-2 py-1 hover:text-yellow-500 font-code bg-neutral-900 shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
           >
             <StarIcon size={18} />
             <div className="font-code">5.2k</div>
@@ -90,27 +95,17 @@ const Library = () => {
           <button
             className="flex items-center gap-3 transition-all duration-300
                              hover:translate-y-[-2px] hover:shadow-[0_6px_15px_rgba(0,255,255,0.4)]
-                             rounded-md px-2 py-1 font-code bg-neutral-900 shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
+                             rounded-md px-2 py-1 hover:text-sky-500 font-code bg-neutral-900 shadow-[0_2px_6px_rgba(0,0,0,0.3)]"
           >
             <DownloadCloudIcon size={18} />
             <div className="font-code">5.2k</div>
           </button>
         </div>
 
-        <button
-          className="
-            flex items-center gap-3 justify-center py-2 px-3
-            w-full mt-7 transition-all duration-300
-            rounded-lg font-code font-medium
-            bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500
-            bg-[length:200%_200%] animate-gradient-x
-            text-white border-2 border-transparent
-            shadow-lg hover:-translate-y-1 hover:shadow-xl
-          "
-        >
+        <GradientButton>
           <CloudDownload size={20} />
           Download
-        </button>
+        </GradientButton>
       </div>
     </div>
   );
