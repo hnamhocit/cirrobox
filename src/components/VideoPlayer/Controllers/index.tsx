@@ -67,7 +67,7 @@ const Controllers = () => {
         <div
           className="absolute top-0 left-0 h-full w-3/5 bg-blue-500"
           style={{
-            width: `${((currentTime / (videoRef.current?.duration as number)) * 100}%`,
+            width: `${(currentTime / (videoRef.current?.duration as number)) * 100}%`,
           }}
         >
           <div className="absolute w-3 h-3 right-0 top-1/2 -translate-y-1/2 translate-x-1/2 bg-white rounded-full"></div>
