@@ -30,11 +30,11 @@ const AppDetails = () => {
           ></div>
 
           <div className="space-y-2">
-            <div className="text-4xl text-blue-500 font-bold font-code">
+            <div className="text-3xl md:text-4xl text-blue-500 font-bold font-code">
               Telegram
             </div>
 
-            <div className="text-lg">
+            <div className="md:text-lg">
               Telegram is a messaging app with a focus on speed and security.
               It's superfast, simple and free. It is like SMS, but more
               powerful.
