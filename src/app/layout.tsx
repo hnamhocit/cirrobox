@@ -2,11 +2,13 @@ import "./globals.css";
 
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+import {ReactNode} from "react";
 
 import Providers from "@/components/Providers";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProgressProvider from "@/contexts/ProgressProvider";
+import {NextIntlClientProvider} from "next-intl";
 
 const font = Inter();
 
@@ -25,25 +27,27 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="en">
       <body className={` ${font.className} antialiased`}>
-        <Providers>
-          <ProgressProvider>
-            <Header />
+	      <NextIntlClientProvider>
+		      <Providers>
+			      <ProgressProvider>
+				      <Header />
 
-            <div className="container px-4 mx-auto min-h-screen space-y-12">
-              {children}
-            </div>
+				      <div className="container px-4 mx-auto min-h-screen space-y-12">
+					      {children}
+				      </div>
 
-            <Footer />
-          </ProgressProvider>
-        </Providers>
+				      <Footer />
+			      </ProgressProvider>
+		      </Providers>
+	      </NextIntlClientProvider>
       </body>
     </html>
   );

@@ -46,7 +46,7 @@ const Library = () => {
           <div className="flex-1 h-[2px] rounded-full bg-neutral-700"></div>
         </div>
 
-        <div className="text-sm grid grid-cols-2 gap-3">
+        <div className="text-sm grid grid-cols-2 gap-3 text-white">
           <button
             className="flex items-center gap-3 transition-all duration-300
                              hover:text-blue-500 hover:translate-y-[-2px] hover:shadow-[0_6px_15px_rgba(59,130,246,0.4)]

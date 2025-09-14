@@ -1,0 +1,9 @@
+{
+  "Hero": {
+    "button": "Bắt đầu",
+    "intro": "Xin chào 👋, tôi là <strong>Nam</strong> — một <codePink>lập trình viên full-stack</codePink> và là người tạo ra <codeBlue>CirroBox</codeBlue>.",
+    "passion": "Tôi đam mê xây dựng các <code>ứng dụng có khả năng mở rộng</code>, <code>thân thiện với người dùng</code> và thích khám phá công nghệ mới. Kinh nghiệm của tôi trải rộng qua <tech>React</tech>, <tech>Next.js</tech>, <tech>Node.js</tech>, và tôi liên tục mở rộng kỹ năng với các ngôn ngữ và framework như <lang>Rust</lang>, <lang>Go</lang>, <lang>Java</lang>, <lang>C#</lang>, và nhiều hơn nữa.",
+    "mission": "Tôi tạo ra không gian này để chia sẻ các công cụ và dự án miễn phí — từ <codeFuchsia>CLI utilities</codeFuchsia> đến ứng dụng và máy chủ — với mục tiêu làm cho internet trở nên tốt đẹp và cởi mở hơn. 🚀",
+    "github": "Nếu bạn quan tâm, hãy xem công việc và đóng góp của tôi tại đây:"
+  }
+}

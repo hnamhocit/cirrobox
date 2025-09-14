@@ -1,0 +1,9 @@
+{
+  "Hero": {
+    "button": "Get Started",
+    "intro": "Hi there 👋, I’m <strong>Nam</strong> — a <codePink>full-stack developer</codePink> and the creator of <codeBlue>CirroBox</codeBlue>.",
+    "passion": "I’m passionate about building <code>scalable</code>, <code>user-friendly applications</code> and love exploring new technologies. My experience spans across <tech>React</tech>, <tech>Next.js</tech>, <tech>Node.js</tech>, and I’m continuously expanding my skills with languages and frameworks like <lang>Rust</lang>, <lang>Go</lang>, <lang>Java</lang>, <lang>C#</lang>, and more.",
+    "mission": "I created this space to share free tools and projects — from <codeFuchsia>CLI utilities</codeFuchsia> to apps and servers — with the goal of making the internet a better and more open place. 🚀",
+    "github": "If you’re interested, check out my work and contributions here:"
+  }
+}
