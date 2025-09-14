@@ -22,8 +22,6 @@ import {
   UserIcon,
 } from "lucide-react";
 import ProgressLink from "../ProgressLink";
-import { signOut } from "firebase/auth";
-import { auth } from "@/config/firebase";
 
 const Header = () => {
   const { theme, toggleTheme } = useThemeStore();
@@ -32,7 +30,7 @@ const Header = () => {
   const { user, logout } = useUserStore();
 
   return (
-    <header className="sticky top-0 left-0 w-full z-20 h-16 bg-white dark:bg-neutral-950 transition-colors">
+    <header className="sticky top-0 left-0 w-full z-20 h-16 bg-[rgba(255,255,255,.7)] dark:bg-[rgba(0,0,0,.7)] backdrop-blur-2xl">
       <div className="absolute bottom-0 h-[2px] w-full left-0 bg-neutral-200 dark:bg-neutral-700 transition-colors">
         <div
           className="absolute top-0 left-0 h-full transition-all bg-linear-65 from-purple-500 to-pink-500 shadow-lg shadow-blue-500"
