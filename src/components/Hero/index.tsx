@@ -8,7 +8,7 @@ const Hero = () => {
 	const t = useTranslations("Hero");
 
 	return (
-		<div className="h-[calc(100vh-64px)] flex items-center gap-12">
+		<div className="h-[calc(100vh-80px)] flex items-center gap-12">
 			{/* Avatar + Info */}
 			<div className="flex-1 hidden md:flex flex-col items-center gap-7 text-center">
 				<div
