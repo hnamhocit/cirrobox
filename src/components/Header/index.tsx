@@ -17,7 +17,7 @@ const Header = () => {
             <ProgressBar progress={progress}/>
 
             <div
-                className="h-full container mx-auto flex items-center px-4 justify-between bg-white dark:bg-neutral-900/50 backdrop-blur-2xl rounded-xl">
+                className="h-full container mx-auto flex items-center px-4 justify-between bg-white/50 dark:bg-neutral-900/50 backdrop-blur-2xl rounded-xl">
                 <div className="flex-1 flex items-center gap-3">
                     <ProgressLink href="/">
                         <Image

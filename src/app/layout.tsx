@@ -1,7 +1,7 @@
 import "./globals.css";
 
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import type {Metadata} from "next";
+import {Inter} from "next/font/google";
 import {ReactNode} from "react";
 
 import Providers from "@/components/Providers";
@@ -9,46 +9,49 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProgressProvider from "@/contexts/ProgressProvider";
 import {NextIntlClientProvider} from "next-intl";
+import OneTimePopup from "@/components/OneTimePopup";
 
 const font = Inter();
 
 export const metadata: Metadata = {
-  title: "CirroBox",
-  description:
-    "Share free tools and projects — from CLI utilities to apps and servers",
-  icons: {
-    icon: [
-      { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
-      { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
-      { url: "/favicon.ico" },
-    ],
-    apple: "/apple-touch-icon.png",
-  },
-  manifest: "/site.webmanifest",
+    title: "CirroBox",
+    description:
+        "Share free tools and projects — from CLI utilities to apps and servers",
+    icons: {
+        icon: [
+            {url: "/favicon-16x16.png", sizes: "16x16", type: "image/png"},
+            {url: "/favicon-32x32.png", sizes: "32x32", type: "image/png"},
+            {url: "/favicon.ico"},
+        ],
+        apple: "/apple-touch-icon.png",
+    },
+    manifest: "/site.webmanifest",
 };
 
 export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: ReactNode;
+                                             children,
+                                         }: Readonly<{
+    children: ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body className={` ${font.className} antialiased`}>
-	      <NextIntlClientProvider>
-		      <Providers>
-			      <ProgressProvider>
-				      <Header />
+    return (
+        <html lang="en">
+        <body className={` ${font.className} antialiased`}>
+        <OneTimePopup/>
 
-				      <div className="container px-4 mx-auto min-h-screen space-y-12">
-					      {children}
-				      </div>
+        <NextIntlClientProvider>
+            <Providers>
+                <ProgressProvider>
+                    <Header/>
 
-				      <Footer />
-			      </ProgressProvider>
-		      </Providers>
-	      </NextIntlClientProvider>
-      </body>
-    </html>
-  );
+                    <div className="container px-4 mx-auto min-h-screen space-y-12">
+                        {children}
+                    </div>
+
+                    <Footer/>
+                </ProgressProvider>
+            </Providers>
+        </NextIntlClientProvider>
+        </body>
+        </html>
+    );
 }

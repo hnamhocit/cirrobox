@@ -1,7 +1,16 @@
-import React from 'react';
+import React, {Key} from 'react';
 
 import {Button, Dropdown, DropdownItem, DropdownMenu, DropdownTrigger} from "@heroui/react";
-import {BellIcon, LayoutGridIcon, LibraryIcon, LogOutIcon, MoonIcon, SunIcon, UserIcon} from "lucide-react";
+import {
+    BellIcon,
+    BookOpenTextIcon,
+    LayoutGridIcon,
+    LibraryIcon,
+    LogOutIcon,
+    MoonIcon,
+    SunIcon,
+    UserIcon
+} from "lucide-react";
 
 import {useThemeStore, useUserStore} from "@/stores";
 import {useAuthModal} from "@/contexts/AuthModalProvider";
@@ -9,11 +18,54 @@ import {Theme} from "@/interfaces";
 import LanguageSwitcher from "./LanguageSwitcher";
 import {useRouter} from "next/navigation";
 
+const items = [
+    {
+        name: "Upload app",
+        key: "uploads/app",
+        icon: <LayoutGridIcon size={20}/>
+    },
+
+    {
+        name: "Upload library",
+        key: "uploads/lib",
+        icon: <LibraryIcon size={20}/>
+    },
+
+    {
+        name: "Upload document",
+        key: "uploads/document",
+        icon: <BookOpenTextIcon size={20}/>
+    },
+
+    {
+        name: "Logout",
+        key: "logout",
+        icon: <LogOutIcon size={20}/>
+    }
+]
+
 const Actions = () => {
     const {theme, toggleTheme} = useThemeStore();
     const {onOpen} = useAuthModal();
     const {user, logout} = useUserStore();
     const router = useRouter();
+
+    const handleAction = (key: Key) => {
+        switch (key) {
+            case "uploads/app":
+                router.push(`/${key}`)
+                break
+            case "uploads/lib":
+                router.push(`/${key}`)
+                break
+            case "uploads/document":
+                router.push(`/${key}`)
+                break
+            case "logout":
+                logout().then(r => r);
+                break
+        }
+    }
 
     return (
         <div className="flex-1 flex items-center gap-3 justify-end">
@@ -39,36 +91,12 @@ const Actions = () => {
                         </Button>
                     </DropdownTrigger>
 
-                    <DropdownMenu onAction={key => {
-                        switch (key) {
-                            case "upload-app":
-                                router.push("/uploads/app")
-                                break
-                            case "upload-lib":
-                                router.push("/uploads/lib")
-                                break
-                            case "logout":
-                                logout().then(r => r);
-                                break
-                        }
-                    }}>
-                        <DropdownItem key="upload-app" startContent={
-                            <LayoutGridIcon size={20}/>
-                        }>
-                            Upload App
-                        </DropdownItem>
-
-                        <DropdownItem key="upload-lib" startContent={
-                            <LibraryIcon size={20}/>
-                        }>
-                            Upload Lib
-                        </DropdownItem>
-
-                        <DropdownItem key="logout" startContent={
-                            <LogOutIcon size={20}/>
-                        }>
-                            Logout
-                        </DropdownItem>
+                    <DropdownMenu onAction={handleAction}>
+                        {items.map(item => (
+                            <DropdownItem key={item.key} startContent={item.icon}>
+                                {item.name}
+                            </DropdownItem>
+                        ))}
                     </DropdownMenu>
                 </Dropdown>
             ) : (

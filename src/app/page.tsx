@@ -3,15 +3,18 @@
 import Apps from "@/components/Apps";
 import Hero from "@/components/Hero";
 import Libraries from "@/components/Libraries";
+import Documentation from "@/components/Documentation";
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
+    return (
+        <>
+            <Hero/>
 
-      <Apps />
+            <Apps/>
 
-      <Libraries />
-    </>
-  );
+            <Libraries/>
+
+            <Documentation/>
+        </>
+    );
 }
