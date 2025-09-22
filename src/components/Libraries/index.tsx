@@ -1,26 +1,28 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {collection, onSnapshot} from "@firebase/firestore";
 
 import Section from "../Section";
 import Library from "./Library";
 import {ILib} from "@/interfaces";
 import EmptyWithUpload from "@/components/EmptyWithUpload";
 import Loading from "@/components/Loading";
+import {db} from "@/config/firebase";
 
 const Libraries = () => {
-    const [libs, setLibs] = useState<ILib[]>([1])
+    const [libs, setLibs] = useState<ILib[]>([])
     const [isLoading, setIsLoading] = useState(false)
 
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //
-    //     const unsubscriber = onSnapshot(collection(db, 'apps'), snapshot => {
-    //         const data = snapshot.docs.map(doc => doc.data()) as ILib[]
-    //         setLibs(data)
-    //         setIsLoading(false)
-    //     })
-    //
-    //     return () => unsubscriber()
-    // }, [])
+    useEffect(() => {
+        setIsLoading(true)
+
+        const unsubscriber = onSnapshot(collection(db, 'apps'), snapshot => {
+            const data = snapshot.docs.map(doc => doc.data()) as ILib[]
+            setLibs(data)
+            setIsLoading(false)
+        })
+
+        return () => unsubscriber()
+    }, [])
 
     return (
         <Section title="Libraries">

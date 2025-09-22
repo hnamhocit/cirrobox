@@ -1,26 +1,28 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {collection, onSnapshot} from "@firebase/firestore";
 
 import Section from "../Section";
 import App from "./App";
 import {IApp} from "@/interfaces";
 import EmptyWithUpload from "@/components/EmptyWithUpload";
 import Loading from "@/components/Loading";
+import {db} from "@/config/firebase";
 
 const Apps = () => {
-    const [apps, setApps] = useState<IApp[]>([1]);
+    const [apps, setApps] = useState<IApp[]>([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    // useEffect(() => {
-    //     setIsLoading(true)
-    //
-    //     const unsubscriber = onSnapshot(collection(db, 'apps'), snapshot => {
-    //         const data = snapshot.docs.map(doc => doc.data()) as IApp[]
-    //         setApps(data)
-    //         setIsLoading(false)
-    //     })
-    //
-    //     return () => unsubscriber()
-    // }, [])
+    useEffect(() => {
+        setIsLoading(true)
+
+        const unsubscriber = onSnapshot(collection(db, 'apps'), snapshot => {
+            const data = snapshot.docs.map(doc => doc.data()) as IApp[]
+            setApps(data)
+            setIsLoading(false)
+        })
+
+        return () => unsubscriber()
+    }, [])
 
     return (
         <Section title={`Applications`}>
